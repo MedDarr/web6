@@ -236,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 
 } else {
     $stmt = $db->prepare("UPDATE Person SET p_name= :name, mail= :mail, year= :year, gender= :gender, limbs_num= :limbs_num, biography= :biography, p_login=:p_login, p_pass=:p_pass where p_id = :p_id");
-    $stmtErr = $stmt->execute(['p_id' => $_COOKIE['changed_uid'], 'name' => $_POST['name'],'mail' => $_POST['email'] , 'year' => $_POST['year'], 'gender' => $_POST['gender'], 'limbs_num' => $_POST['limbs'], 'biography' => $_POST['biography'], 'p_login' => $_POST['p_login'], 'p_pass' => hash("ppppp",$_POST['p_pass'])]);
+    $stmtErr = $stmt->execute(['p_id' => $_COOKIE['changed_uid'], 'name' => $_POST['name'],'mail' => $_POST['email'] , 'year' => $_POST['year'], 'gender' => $_POST['gender'], 'limbs_num' => $_POST['limbs'], 'biography' => $_POST['biography'], 'p_login' => $_POST['p_login'], 'p_pass' => hash("adler32",$_POST['p_pass'])]);
     setcookie('changed_uid', '', 1);
     $stmt = $db->prepare("DELETE FROM Person_Ability WHERE p_id=:p_id;");
     $stmtErr = $stmt->execute(['p_id' => $_COOKIE['changed_uid']]);

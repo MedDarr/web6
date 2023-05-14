@@ -41,7 +41,7 @@ else {
     $pass = '1211928';
     $db = new PDO('mysql:host=localhost;dbname=u52810', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
     $stmt = $db->prepare("SELECT * FROM Person WHERE p_login = :p_login && p_pass = :p_pass;");
-    $stmtErr = $stmt->execute(['p_login' => $_POST['login'], 'p_pass' => hash("ppppp",$_POST['pass'])]);
+    $stmtErr = $stmt->execute(['p_login' => $_POST['login'], 'p_pass' => hash("adler32",$_POST['pass'])]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$result) {
         print ("Такого пользователя нет");

@@ -195,7 +195,7 @@ else {
             srand(time());
             $login = strval(rand(10000,99999));
             $pass = strval(rand(10000,99999));
-            $passcode = hash("ppppp",intval($pass));
+            $passcode = hash("adler32",intval($pass));
             $stmt = $db->prepare("INSERT INTO Person (p_name, mail, year, gender, limbs_num, biography, p_login, p_pass) VALUES (:name, :mail, :year, :gender, :limbs_num, :biography, :p_login, :p_pass);");
             $stmtErr =  $stmt -> execute(['name' => $_POST['name'],'mail' => $_POST['email'] , 'year' => $_POST['year'], 'gender' => $_POST['gender'], 'limbs_num' => $_POST['limbs'], 'biography' => $_POST['biography'],'p_login' => $login, 'p_pass' => $passcode]);
             if (!$stmtErr) {
