@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>My website</title>
+    <title>Задание 6</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width initial-scale=1">
 </head>
@@ -9,29 +9,27 @@
 <?php
 if (!empty($messages)) {
     print('<div id="messages">');
-    // Выводим все сообщения.
+    // Выводим все сообщения
     foreach ($messages as $message) {
         print($message);
     }
     print('</div>');
 }
 
-// Далее выводим форму отмечая элементы с ошибками классом error
-// и задавая начальные значения элементов ранее сохраненными.
 ?>
-
+<a href="./login.php">Форма авторизации</a>
 <form action="" method="POST">
     <label>
         Имя:<br>
-        <input name="name"
+          <input name="name"
                placeholder="Имя" required <?php print('value="' . $values['name'] . '"'); if ($errors['name']) print(' class="error"'); ?>>
     </label><br>
 
     <label>
-        Email:<br>
+        E-mail:<br>
         <input name="email"
                type="email"
-               placeholder="email" required <?php print('value="' . $values['email'] . '"'); if ($errors['email']) print(' class="error"'); ?>>
+               placeholder="e-mail" required <?php print('value="' . $values['email'] . '"'); if ($errors['email']) print(' class="error"'); ?>>
     </label><br>
 
     <label>
@@ -47,54 +45,50 @@ if (!empty($messages)) {
 
     Пол: <br>
     <label><input type="radio"
-                  name="pol" value="m" required <?php if(intval($values['pol'])==m) print ("checked");  if ($errors['pol']) print(' class="error"');?>>
+                  name="gender" value="0" required <?php if(intval($values['gender'])==0) print ("checked");  if ($errors['gender']) print(' class="error"');?>>
         Мужской</label>
     <label><input type="radio"
-                  name="pol" value="w" required <?php if(intval($values['pol'])==w) print ("checked"); if ($errors['pol']) print(' class="error"');?>>
+                  name="gender" value="1" required <?php if(intval($values['gender'])==1) print ("checked"); if ($errors['gender']) print(' class="error"');?>>
         Женский</label><br>
 
     Количество: <br>
-    <label><input type="radio"
-                  name="kolvo" value="1" required <?php if(!$values['kolvo']=='' && intval($values['kolvo'])==1) print ("checked"); if ($errors['kolvo']) print(' class="error"');?>>
+    <label>
+      <input type="radio"
+                  name="limbs" value="1" required <?php if(!$values['limbs']=='' && intval($values['limbs'])==1) print ("checked"); if ($errors['limbs']) print(' class="error"');?>>
         1</label>
     <label><input type="radio"
-    name="kolvo" value="2" required <?php if(!$values['kolvo']=='' && intval($values['kolvo'])==2) print ("checked"); if ($errors['kolvo']) print(' class="error"');?>>
+                  name="limbs" value="2" required <?php if(!$values['limbs']=='' && intval($values['limbs'])==2) print ("checked"); if ($errors['limbs']) print(' class="error"');?>>
         2</label>
     <label><input type="radio"
-    name="kolvo" value="3" required <?php if(!$values['kolvo']=='' && intval($values['kolvo'])==3) print ("checked"); if ($errors['kolvo']) print(' class="error"');?>>
+                  name="limbs" value="3" required <?php if(!$values['limbs']=='' && intval($values['limbs'])==3) print ("checked"); if ($errors['limbs']) print(' class="error"');?>>
         3</label>
     <label><input type="radio"
-    name="kolvo" value="4" required <?php if(!$values['kolvo']=='' && intval($values['kolvo'])==4) print ("checked"); if ($errors['kolvo']) print(' class="error"');?>>
+                  name="limbs" value="4" required <?php if(!$values['limbs']=='' && intval($values['limbs'])==4) print ("checked"); if ($errors['limbs']) print(' class="error"');?>>
         4</label><br>
 
     <label>
         Суперсилы:
         <br>
-        <select name="sposobn[]" multiple="multiple">
-            <option value="immortal" <?php if(intval($values['immortal'])==1) print ("selected") ?>>бессмертие</option>
-            <option value="throughwalls" <?php if(intval($values['throughwalls'])==1) print ("selected") ?>>прохождение сквозь стены</option>
-            <option value="levitation" <?php if(intval($values['levitation'])==1) print ("selected") ?>>Левитация</option>
+        <select name="powers[]"
+                multiple="multiple">
+            <option value="Invincibility" <?php if(intval($values['invincibility'])==1) print ("selected") ?>>Бессмертие</option>
+            <option value="Noclip" <?php if(intval($values['noclip'])==1) print ("selected") ?>>Хождение сквозь стены</option>
+            <option value="Levitation" <?php if(intval($values['levitation'])==1) print ("selected") ?>>Левитация</option>
         </select>
     </label><br>
 
     <label>
         Биография:<br>
-        <textarea name="bio" placeholder="Расскажите о себе"><?php print($values['bio']); ?></textarea>
+        <textarea name="biography"><?php print($values['biography']); ?></textarea>
     </label><br>
 
     Согласие c лицензионным соглашением:<br>
     <label><input type="checkbox"
-                  name="info" required <?php if(intval($values['info'])==1) print ("checked"); if ($errors['info']) print(' class="error"'); ?>>
-                  C контрактом ознакомлен(а)</label><br>
+                  name="check" required <?php if(intval($values['check'])==1) print ("checked"); if ($errors['check']) print(' class="error"'); ?>>
+        Да</label><br>
 
     <input type="submit" value="Отправить">
+    <!-- При нажатии на кнопку будет отправлен POST-запрос на index.php -->
 </form>
 </body>
 </html>
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
