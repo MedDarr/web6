@@ -1,11 +1,17 @@
-html {
-	background: linear-gradient(to bottom, #0bc9d0, #050aa8); 
-    min-height: 100%;
-	position: relative;
-	overflow: hidden;
+.form{
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+    order:1;
+}
+.form-decor{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    width: auto;
+    border:3px solid black;
+    margin:0;
 }
 body {
-	color:#ffffff;
 	margin: 30px auto 0;
     width: fit-content;
 }
